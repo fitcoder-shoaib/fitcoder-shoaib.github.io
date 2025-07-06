@@ -1,36 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>fitcoder-shoaib | Coder Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>fitcoder-shoaib | Cyber Explorer</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      color: #00ff88;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #00ffaa;
+      border-left: 5px solid #00ffaa;
+      padding-left: 10px;
+    }
+
+    .terminal-box {
+      background: #111;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #00ff88;
+      box-shadow: 0 0 10px #00ff88aa;
+      margin-bottom: 30px;
+    }
+
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .cursor {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>fitcoder-shoaib</h1>
-    <p>Self-taught programmer exploring the world of code.</p>
-  </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hi, I'm fitcoder-shoaib — passionate about problem solving and creating programs. Currently building small projects like a number factorizer.</p>
-  </section>
+  <h1>> whoami <span class="cursor">█</span></h1>
+  <div class="terminal-box">
+    fitcoder-shoaib<br>
+    Self-taught cyber explorer | Terminal tinkerer | 12th Pass<br>
+    Obsessed with digital security and learning to hack like a master.
+  </div>
 
-  <section id="projects">
-  <h2>Projects</h2>
-  <ul>
-    <li>
-      <strong>Number Factorizer</strong> – A tool that finds all the factors of a number.<br />
-      <a href="projects/factorizer.html" target="_blank">🔍 Try It Live</a> |
-      <a href="projects/factorizer.py" target="_blank">📄 View Python Code</a> |
-      <a href="https://github.com/fitcoder-shoaib/fitcoder-shoaib.github.io/blob/main/projects/factorizer.py" target="_blank">🔗 GitHub Repo</a>
-    </li>
-  </ul>
-</section>
+  <h2>> origin story</h2>
+  <div class="terminal-box">
+    covid-19 lockdown.<br>
+    bored kid + laptop + curiosity.<br>
+    Started with Notepad viruses (VBS) → then CMD scripts (chaotic but fun).<br>
+    Discovered Kali Linux via YouTube + Discord.<br>
+    Learned commands, managed users, broke things, fixed them again.<br>
+    Tools I touched: Metasploit, Hydra, and more.<br>
+    Python explorer. Not a master yet. Still hacking my way through.
+  </div>
 
-  <footer>
-    <p>Made with ❤️ by <a href="https://github.com/fitcoder-shoaib">fitcoder-shoaib</a></p>
-  </footer>
+  <h2>> skills_used --list</h2>
+  <div class="terminal-box">
+    ✔ Kali Linux<br>
+    ✔ Metasploit Framework<br>
+    ✔ Hydra<br>
+    ✔ Linux installations & user management<br>
+    ✔ Python basics (CLI programs)
+  </div>
+
+  <h2>> projects</h2>
+  <div class="terminal-box">
+    <strong>🔢 Number Factorizer</strong><br>
+    A Python script that shows all factors of a number.<br>
+    <a href="projects/factorizer.html" target="_blank">🔍 Try It Live</a> |
+    <a href="projects/factorizer.py" target="_blank">📄 View Code</a> |
+    <a href="https://github.com/fitcoder-shoaib/fitcoder-shoaib.github.io/blob/main/projects/factorizer.py" target="_blank">🔗 GitHub</a>
+  </div>
+
+  <h2>> contact_me</h2>
+  <div class="terminal-box">
+    GitHub: <a href="https://github.com/fitcoder-shoaib" target="_blank">@fitcoder-shoaib</a><br>
+    Email: fitcoder@example.com *(update this!)*
+  </div>
+
 </body>
 </html>
