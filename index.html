@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>fitcoder-shoaib | Cyber Explorer</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>fitcoder-shoaib | Terminal Portfolio</title>
   <style>
+    :root {
+      --bg: #0d0d0d;
+      --text: #00ff88;
+      --accent: #00ffaa;
+      --link: #00ffff;
+    }
+
     body {
-      background-color: #0d0d0d;
-      color: #00ff88;
-      font-family: 'Courier New', Courier, monospace;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Courier New', monospace;
+      margin: 0;
       padding: 20px;
-      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 10px;
     }
 
     h1, h2 {
-      color: #00ffaa;
-      border-left: 5px solid #00ffaa;
+      color: var(--accent);
+      border-left: 4px solid var(--accent);
       padding-left: 10px;
     }
 
-    .terminal-box {
-      background: #111;
-      padding: 20px;
-      border-radius: 8px;
-      border: 1px solid #00ff88;
-      box-shadow: 0 0 10px #00ff88aa;
-      margin-bottom: 30px;
-    }
-
     a {
-      color: #00ffff;
+      color: var(--link);
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
+    }
+
+    .terminal-box {
+      background: #111;
+      border: 1px solid var(--text);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px var(--text);
+      margin-bottom: 30px;
     }
 
     .cursor {
@@ -45,51 +58,103 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
+
+    .typing {
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--text);
+      animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    /* Dark mode toggle */
+    #toggleMode {
+      background: none;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 5px 10px;
+      cursor: pointer;
+      float: right;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      h1, h2 {
+        font-size: 20px;
+      }
+      .terminal-box {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="container">
+    <button id="toggleMode">🌙 Toggle Mode</button>
 
-  <h1>> whoami <span class="cursor">█</span></h1>
-  <div class="terminal-box">
-    fitcoder-shoaib<br>
-    Self-taught cyber explorer | Terminal tinkerer | 12th Pass<br>
-    Obsessed with digital security and learning to hack like a master.
+    <h1 class="typing">> whoami <span class="cursor">█</span></h1>
+    <div class="terminal-box">
+      fitcoder-shoaib<br>
+      Self-taught cyber explorer | 12th Pass | Python + Linux<br>
+      Curious since 8th grade. Still hacking my way through.
+    </div>
+
+    <h2>> origin_story</h2>
+    <div class="terminal-box">
+      covid-19 lockdown. notepad. vbs scripts. then cmd. failure. <br>
+      💡 Found Kali Linux on YouTube + Discord.<br>
+      Explored tools like Metasploit, Hydra, user mgmt.<br>
+      Python basics. Still hungry to go deeper.
+    </div>
+
+    <h2>> skills --list</h2>
+    <div class="terminal-box">
+      ✔ Kali Linux<br>
+      ✔ Metasploit Framework<br>
+      ✔ Hydra<br>
+      ✔ Linux installation & user management<br>
+      ✔ Python (basic terminal programs)
+    </div>
+
+    <h2>> projects</h2>
+    <div class="terminal-box">
+      🔢 Number Factorizer<br>
+      <a href="projects/factorizer.html" target="_blank">🔍 Try It Live</a> |
+      <a href="projects/factorizer.py" target="_blank">📄 View Python Code</a>
+    </div>
+
+    <h2>> contact</h2>
+    <div class="terminal-box">
+      GitHub: <a href="https://github.com/fitcoder-shoaib" target="_blank">@fitcoder-shoaib</a><br>
+      Email: fitcoder@example.com *(update this!)*
+    </div>
+
+    <h2>> secrets</h2>
+    <div class="terminal-box">
+      Access hidden file: <a href="hidden.html" target="_blank">/hidden.html</a> 🕵️‍♂️
+    </div>
   </div>
 
-  <h2>> origin story</h2>
-  <div class="terminal-box">
-    covid-19 lockdown.<br>
-    bored kid + laptop + curiosity.<br>
-    Started with Notepad viruses (VBS) → then CMD scripts (chaotic but fun).<br>
-    Discovered Kali Linux via YouTube + Discord.<br>
-    Learned commands, managed users, broke things, fixed them again.<br>
-    Tools I touched: Metasploit, Hydra, and more.<br>
-    Python explorer. Not a master yet. Still hacking my way through.
-  </div>
-
-  <h2>> skills_used --list</h2>
-  <div class="terminal-box">
-    ✔ Kali Linux<br>
-    ✔ Metasploit Framework<br>
-    ✔ Hydra<br>
-    ✔ Linux installations & user management<br>
-    ✔ Python basics (CLI programs)
-  </div>
-
-  <h2>> projects</h2>
-  <div class="terminal-box">
-    <strong>🔢 Number Factorizer</strong><br>
-    A Python script that shows all factors of a number.<br>
-    <a href="projects/factorizer.html" target="_blank">🔍 Try It Live</a> |
-    <a href="projects/factorizer.py" target="_blank">📄 View Code</a> |
-    <a href="https://github.com/fitcoder-shoaib/fitcoder-shoaib.github.io/blob/main/projects/factorizer.py" target="_blank">🔗 GitHub</a>
-  </div>
-
-  <h2>> contact_me</h2>
-  <div class="terminal-box">
-    GitHub: <a href="https://github.com/fitcoder-shoaib" target="_blank">@fitcoder-shoaib</a><br>
-    Email: fitcoder@example.com *(update this!)*
-  </div>
-
+  <script>
+    const toggleBtn = document.getElementById('toggleMode');
+    toggleBtn.onclick = () => {
+      document.body.classList.toggle('light');
+      if (document.body.classList.contains('light')) {
+        document.body.style.backgroundColor = '#ffffff';
+        document.body.style.color = '#222';
+        toggleBtn.textContent = '🌑 Toggle Mode';
+      } else {
+        document.body.style.backgroundColor = '#0d0d0d';
+        document.body.style.color = '#00ff88';
+        toggleBtn.textContent = '🌙 Toggle Mode';
+      }
+    };
+  </script>
 </body>
 </html>
