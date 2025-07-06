@@ -1,31 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Access Granted</title>
+  <meta charset="UTF-8">
+  <title>Access Terminal | fitcoder-shoaib</title>
   <style>
     body {
-      background: black;
-      color: lime;
+      background-color: black;
+      color: #00ff00;
       font-family: 'Courier New', monospace;
-      padding: 40px;
+      padding: 30px;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
     }
-    h1 {
-      font-size: 2rem;
-      text-shadow: 0 0 10px lime, 0 0 20px lime;
+
+    .terminal {
+      max-width: 100%;
+      height: 90vh;
+      overflow-y: auto;
+      border: 1px solid #00ff00;
+      padding: 20px;
+      box-shadow: 0 0 20px #00ff00aa;
     }
-    .glow {
-      animation: pulse 1.5s infinite;
+
+    .line {
+      margin: 5px 0;
     }
-    @keyframes pulse {
+
+    .input-line::after {
+      content: '█';
+      animation: blink 1s step-end infinite;
+      margin-left: 5px;
+    }
+
+    @keyframes blink {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+      50% { opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <h1 class="glow">💀 Access Granted</h1>
-  <p>You’ve found the hidden file.</p>
-  <p>This is a restricted zone for personal notes, experiments, and digital secrets.</p>
-  <p>🚧 More tools and secrets loading soon...</p>
+  <div class="terminal" id="terminal">
+    <div class="line">[ACCESS GRANTED]</div>
+    <div class="line">> initializing hacker environment...</div>
+    <div class="line">> loading experimental tools</div>
+    <div class="line">> entering deep space console...</div>
+    <div class="line input-line">fitcoder@hidden:~$</div>
+  </div>
+
+  <script>
+    const terminal = document.getElementById('terminal');
+    const messages = [
+      "> decoding...",
+      "> unlocking dev tools...",
+      "> welcome back, Shoaib.",
+      "> status: always curious.",
+      "> tip: curiosity is the first exploit.",
+      "> logs: coming soon..."
+    ];
+
+    let i = 0;
+    function printNext() {
+      if (i < messages.length) {
+        const line = document.createElement('div');
+        line.className = 'line';
+        line.textContent = messages[i];
+        terminal.insertBefore(line, terminal.lastElementChild);
+        terminal.scrollTop = terminal.scrollHeight;
+        i++;
+        setTimeout(printNext, 1000);
+      }
+    }
+
+    setTimeout(printNext, 1500);
+  </script>
 </body>
 </html>
