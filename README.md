@@ -36,6 +36,7 @@ Here are some of the projects featured on my website:
 ## 📫 Contact
 
 - GitHub: [@fitcoder-shoaib](https://github.com/fitcoder-shoaib)
+- Email: github.molecule869@passinbox.com
 
 ---
 
