@@ -590,6 +590,7 @@
       help: () => `Available commands:
 • help           Show this message
 • clear          Clear terminal history
+• cmatrix        Run hacker-style falling matrix rain
 • whoami         Display core identity specs
 • about          Display biography and background
 • skills         Show technical competence areas
@@ -631,9 +632,116 @@ Outside of engineering, I train in fitness and martial arts (Gold Medalist at UI
 - LinkedIn: https://in.linkedin.com/in/0xshoaib
 - Instagram: https://www.instagram.com/shoaib.strikeforce
 - Email: github.molecule869@passinbox.com`,
+      cmatrix: () => {
+        setTimeout(startCMatrix, 50);
+        return 'Launching cmatrix digital rain...';
+      },
       secret: () => `Decrypting coordinate...
 Access Granted: Refer to /hidden.html in the secrets section to unlock console portals.`
     };
+
+    function startCMatrix() {
+      const container = document.querySelector('.terminal-interactive');
+      if (!container) return;
+
+      // Hide standard contents
+      terminalHistory.style.display = 'none';
+      const promptLine = container.querySelector('.terminal-prompt-line');
+      if (promptLine) promptLine.style.display = 'none';
+
+      // Create canvas
+      const canvas = document.createElement('canvas');
+      canvas.id = 'cmatrixCanvas';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.display = 'block';
+      canvas.style.background = 'black';
+      canvas.style.borderRadius = '4px';
+      container.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+      
+      // Set resolution
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
+
+      // Matrix rain characters (binary + characters)
+      const matrixChars = "0101010101010101100110011001100101ABCDEFGHIJKLMNOPQRSTUVWXYZｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄ";
+      const alphabet = matrixChars.split("");
+
+      const fontSize = 14;
+      const columns = Math.floor(canvas.width / fontSize);
+
+      const rainDrops = [];
+      for (let x = 0; x < columns; x++) {
+        rainDrops[x] = Math.random() * -20;
+      }
+
+      let animationId = null;
+
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.06)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < rainDrops.length; i++) {
+          if (rainDrops[i] >= 0) {
+            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+            if (Math.random() > 0.98) {
+              ctx.fillStyle = '#ffffff';
+            } else if (Math.random() > 0.95) {
+              ctx.fillStyle = '#b3ffd9';
+            } else {
+              ctx.fillStyle = '#00ff66';
+            }
+            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+          }
+
+          if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
+          }
+          rainDrops[i]++;
+        }
+        
+        ctx.fillStyle = 'rgba(0, 255, 102, 0.6)';
+        ctx.font = '11px \'Share Tech Mono\', monospace';
+        ctx.fillText("cmatrix active. Press 'q' or 'ESC' to exit.", 10, 20);
+
+        animationId = requestAnimationFrame(draw);
+      }
+
+      animationId = requestAnimationFrame(draw);
+
+      // Handle exit
+      function exitCMatrix(e) {
+        if (e.key === 'q' || e.key === 'Q' || e.key === 'Escape' || (e.ctrlKey && e.key === 'c')) {
+          cancelAnimationFrame(animationId);
+          canvas.remove();
+          terminalHistory.style.display = 'block';
+          if (promptLine) promptLine.style.display = 'flex';
+          
+          window.removeEventListener('keydown', exitCMatrix);
+          window.removeEventListener('resize', resizeMatrix);
+          
+          terminalInput.value = '';
+          terminalInput.focus();
+          terminalHistory.scrollTop = terminalHistory.scrollHeight;
+        }
+      }
+
+      function resizeMatrix() {
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+        const newColumns = Math.floor(canvas.width / fontSize);
+        while (rainDrops.length < newColumns) {
+          rainDrops.push(Math.random() * -20);
+        }
+      }
+
+      window.addEventListener('keydown', exitCMatrix);
+      window.addEventListener('resize', resizeMatrix);
+    }
 
     terminalInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
