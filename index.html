@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Canvas for binary particle mouse trail -->
+  <canvas id="binaryCanvas"></canvas>
+
   <!-- Header / Navigation -->
   <header id="header">
     <div class="nav-container">
@@ -687,6 +690,76 @@ Access Granted: Refer to /hidden.html in the secrets section to unlock console p
       window.print();
     };
 
+    // --------------------------------------------------
+    // Binary Mouse Trail Effect (Canvas-based)
+    // --------------------------------------------------
+    const canvas = document.getElementById('binaryCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let particles = [];
+    let lastMousePos = { x: 0, y: 0 };
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    
+    window.addEventListener('mousemove', (e) => {
+      // Calculate distance from last particle to throttle creation
+      const dist = Math.hypot(e.clientX - lastMousePos.x, e.clientY - lastMousePos.y);
+      
+      if (dist > 12) { // Spawn every 12 pixels of movement
+        spawnParticle(e.clientX, e.clientY);
+        lastMousePos = { x: e.clientX, y: e.clientY };
+      }
+    });
+    
+    function spawnParticle(x, y) {
+      const char = Math.random() > 0.5 ? '1' : '0';
+      particles.push({
+        x: x,
+        y: y,
+        char: char,
+        opacity: 1.0,
+        size: Math.floor(Math.random() * 6) + 12, // 12px to 18px
+        vx: (Math.random() - 0.5) * 0.6, // drift sideways
+        vy: Math.random() * 0.4 + 0.4,   // drift down
+        life: 1.0,
+        decay: Math.random() * 0.02 + 0.015 // fade speed
+      });
+    }
+    
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Determine text color based on active theme
+      const colorText = getComputedStyle(document.body).getPropertyValue('--text').trim();
+      
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.opacity -= p.decay;
+        
+        if (p.opacity <= 0) {
+          particles.splice(i, 1);
+          continue;
+        }
+        
+        ctx.fillStyle = colorText;
+        ctx.globalAlpha = p.opacity;
+        ctx.font = `${p.size}px 'Share Tech Mono', monospace`;
+        ctx.fillText(p.char, p.x, p.y);
+      }
+      
+      ctx.globalAlpha = 1.0;
+      requestAnimationFrame(drawParticles);
+    }
+    
+    requestAnimationFrame(drawParticles);
   </script>
 </body>
 </html>

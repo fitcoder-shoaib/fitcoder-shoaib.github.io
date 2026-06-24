@@ -900,3 +900,20 @@ footer {
     left: -22px;
   }
 }
+
+/* Binary canvas styling */
+#binaryCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99998;
+}
+
+/* Resume wrap responsive safeguard */
+.resume-terminal pre {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
