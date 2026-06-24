@@ -237,9 +237,11 @@
           rainDrops[i]++;
         }
         
-        ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
+        const msg = "Press 'q' or 'ESC' to exit.";
         ctx.font = '14px \'Courier New\', monospace';
-        ctx.fillText("cmatrix active. Press 'q' or 'ESC' to exit.", 20, 30);
+        const msgWidth = ctx.measureText(msg).width;
+        ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
+        ctx.fillText(msg, canvas.width - msgWidth - 20, canvas.height - 20);
 
         animationId = requestAnimationFrame(draw);
       }
