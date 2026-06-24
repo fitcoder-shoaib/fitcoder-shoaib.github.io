@@ -649,13 +649,23 @@ Outside of engineering, I train in fitness and martial arts (Gold Medalist at UI
 
         if (cmd === 'clear') {
           terminalHistory.innerHTML = '';
+        } else if (cmd === 'secret') {
+          const decryptingLine = document.createElement('div');
+          decryptingLine.className = 'terminal-output';
+          decryptingLine.textContent = '> Decrypting...';
+          terminalHistory.appendChild(decryptingLine);
+          terminalInput.disabled = true;
+          terminalHistory.scrollTop = terminalHistory.scrollHeight;
+          setTimeout(() => {
+            decryptingLine.remove();
+            outputLine.innerHTML = commands.secret();
+            terminalHistory.appendChild(outputLine);
+            terminalInput.disabled = false;
+            terminalInput.focus();
+            terminalHistory.scrollTop = terminalHistory.scrollHeight;
+          }, 2000);
         } else if (commands[cmd]) {
-          const res = commands[cmd]();
-          if (cmd === 'secret') {
-            outputLine.innerHTML = res;
-          } else {
-            outputLine.textContent = res;
-          }
+          outputLine.textContent = commands[cmd]();
           terminalHistory.appendChild(outputLine);
         } else {
           outputLine.className = 'terminal-output error';
