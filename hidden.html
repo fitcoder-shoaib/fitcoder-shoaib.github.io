@@ -13,6 +13,7 @@
       height: 100vh;
       margin: 0;
       overflow: hidden;
+      transition: padding 0.3s ease;
     }
 
     .terminal {
@@ -22,16 +23,33 @@
       border: 1px solid #00ff00;
       padding: 20px;
       box-shadow: 0 0 20px #00ff00aa;
+      transition: all 0.3s ease;
     }
 
     .line {
       margin: 5px 0;
     }
 
-    .input-line::after {
-      content: '█';
-      animation: blink 1s step-end infinite;
-      margin-left: 5px;
+    .input-line-container {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+    }
+
+    .prompt-sym {
+      color: #00ff00;
+      margin-right: 8px;
+      user-select: none;
+    }
+
+    .terminal-input {
+      background: transparent;
+      border: none;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      font-size: 16px;
+      outline: none;
+      flex-grow: 1;
     }
 
     @keyframes blink {
@@ -46,7 +64,6 @@
     <div class="line">> initializing hacker environment...</div>
     <div class="line">> loading experimental tools</div>
     <div class="line">> entering deep space console...</div>
-    <div class="line input-line">fitcoder@hidden:~$</div>
   </div>
 
   <script>
@@ -66,11 +83,192 @@
         const line = document.createElement('div');
         line.className = 'line';
         line.textContent = messages[i];
-        terminal.insertBefore(line, terminal.lastElementChild);
+        terminal.appendChild(line);
         terminal.scrollTop = terminal.scrollHeight;
         i++;
         setTimeout(printNext, 1000);
+      } else {
+        showInteractivePrompt();
       }
+    }
+
+    function showInteractivePrompt() {
+      const promptContainer = document.createElement('div');
+      promptContainer.className = 'input-line-container';
+      promptContainer.innerHTML = `
+        <span class="prompt-sym">fitcoder@hidden:~$</span>
+        <input type="text" id="terminalInput" class="terminal-input" autocomplete="off" autofocus />
+      `;
+      terminal.appendChild(promptContainer);
+      
+      const input = document.getElementById('terminalInput');
+      input.focus();
+
+      terminal.addEventListener('click', () => {
+        input.focus();
+      });
+
+      input.addEventListener('keydown', handleCommand);
+    }
+
+    function handleCommand(e) {
+      if (e.key === 'Enter') {
+        const input = e.target;
+        const val = input.value.trim();
+        const cmd = val.toLowerCase();
+        if (!val) return;
+
+        const line = document.createElement('div');
+        line.className = 'line';
+        line.innerHTML = `<span class="prompt-sym">fitcoder@hidden:~$</span> <span>${escapeHtml(val)}</span>`;
+        terminal.insertBefore(line, input.parentNode);
+
+        input.value = '';
+
+        const outputLine = document.createElement('div');
+        outputLine.className = 'line';
+
+        if (cmd === 'clear') {
+          const lines = Array.from(terminal.querySelectorAll('.line'));
+          lines.forEach(l => l.remove());
+        } else if (cmd === 'cmatrix') {
+          startCMatrix();
+          return;
+        } else if (cmd === 'help') {
+          outputLine.innerHTML = `Available commands:<br>
+• cmatrix        - Run hacker-style falling matrix code rain<br>
+• clear          - Clear terminal history<br>
+• exit / back    - Return to main portal<br>
+• secret         - Decrypt secret keys`;
+          terminal.insertBefore(outputLine, input.parentNode);
+        } else if (cmd === 'exit' || cmd === 'back') {
+          window.location.href = 'index.html';
+          return;
+        } else if (cmd === 'secret') {
+          outputLine.textContent = "> Accessing Core: [Shoaib's Terminal Key unlocked: STRIKEFORCE]";
+          terminal.insertBefore(outputLine, input.parentNode);
+        } else {
+          outputLine.style.color = '#ff5f56';
+          outputLine.textContent = `> Command not found: '${val}'. Type 'help' for options.`;
+          terminal.insertBefore(outputLine, input.parentNode);
+        }
+
+        terminal.scrollTop = terminal.scrollHeight;
+      }
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function startCMatrix() {
+      const elements = Array.from(terminal.children);
+      elements.forEach(el => {
+        el.style.display = 'none';
+      });
+      terminal.style.boxShadow = 'none';
+      terminal.style.border = 'none';
+      terminal.style.padding = '0';
+      terminal.style.height = '100vh';
+      document.body.style.padding = '0';
+
+      const canvas = document.createElement('canvas');
+      canvas.id = 'cmatrixCanvas';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.display = 'block';
+      canvas.style.background = 'black';
+      document.body.appendChild(canvas);
+
+      const ctx = canvas.getContext('2d');
+      
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      const matrixChars = "0101010101010101100110011001100101ABCDEFGHIJKLMNOPQRSTUVWXYZｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄ";
+      const alphabet = matrixChars.split("");
+
+      const fontSize = 16;
+      const columns = Math.floor(canvas.width / fontSize);
+
+      const rainDrops = [];
+      for (let x = 0; x < columns; x++) {
+        rainDrops[x] = Math.random() * -30;
+      }
+
+      let animationId = null;
+
+      function draw() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < rainDrops.length; i++) {
+          if (rainDrops[i] >= 0) {
+            const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+            
+            if (Math.random() > 0.98) {
+              ctx.fillStyle = '#ffffff';
+            } else if (Math.random() > 0.95) {
+              ctx.fillStyle = '#b3ffd9';
+            } else {
+              ctx.fillStyle = '#00ff00';
+            }
+            ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+          }
+
+          if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
+          }
+          rainDrops[i]++;
+        }
+        
+        ctx.fillStyle = 'rgba(0, 255, 0, 0.6)';
+        ctx.font = '14px \'Courier New\', monospace';
+        ctx.fillText("cmatrix active. Press 'q' or 'ESC' to exit.", 20, 30);
+
+        animationId = requestAnimationFrame(draw);
+      }
+
+      animationId = requestAnimationFrame(draw);
+
+      function exitCMatrix(e) {
+        if (e.key === 'q' || e.key === 'Q' || e.key === 'Escape' || (e.ctrlKey && e.key === 'c')) {
+          cancelAnimationFrame(animationId);
+          canvas.remove();
+          window.removeEventListener('resize', resizeCanvas);
+          window.removeEventListener('keydown', exitCMatrix);
+
+          document.body.style.padding = '30px';
+          terminal.style.boxShadow = '0 0 20px #00ff00aa';
+          terminal.style.border = '1px solid #00ff00';
+          terminal.style.padding = '20px';
+          terminal.style.height = '90vh';
+          
+          elements.forEach(el => {
+            el.style.display = '';
+          });
+
+          const input = document.getElementById('terminalInput');
+          if (input) {
+            input.value = '';
+            input.focus();
+          }
+          terminal.scrollTop = terminal.scrollHeight;
+        }
+      }
+
+      window.addEventListener('keydown', exitCMatrix);
     }
 
     setTimeout(printNext, 1500);
