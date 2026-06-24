@@ -1,30 +1,31 @@
 (function() {
-  // Determine base path relative to the script location
-  let basePath = '';
+  // Determine relative path prefix to the cursor icon from the script tag's src attribute
+  let relativeCursorUrl = 'hacker-mask-icon.png';
   const currentScript = document.currentScript;
-  if (currentScript && currentScript.src) {
-    const src = currentScript.src;
-    basePath = src.substring(0, src.lastIndexOf('/') + 1);
+  if (currentScript) {
+    const srcAttr = currentScript.getAttribute('src') || '';
+    const lastSlash = srcAttr.lastIndexOf('/');
+    if (lastSlash !== -1) {
+      relativeCursorUrl = srcAttr.substring(0, lastSlash + 1) + 'hacker-mask-icon.png';
+    }
   } else {
     // Fallback if currentScript is not supported
     const isSubdir = window.location.pathname.includes('/projects/');
-    basePath = isSubdir ? '../' : '';
+    relativeCursorUrl = isSubdir ? '../hacker-mask-icon.png' : 'hacker-mask-icon.png';
   }
-
-  const cursorUrl = basePath + 'hacker-mask-icon.png';
 
   // Inject Styles for Custom Cursor and Canvas
   const style = document.createElement('style');
   style.textContent = `
     /* Custom Cursor Styles */
     html, body {
-      cursor: url('${cursorUrl}') 16 19, auto !important;
+      cursor: url('${relativeCursorUrl}') 16 16, auto !important;
     }
     
     /* Interactive elements */
     a, button, input[type="submit"], input[type="button"], .btn-cyber, [role="button"], 
     #toggleMode, #menuToggle, .nav-link, .logo, .resume-actions button, .project-link {
-      cursor: url('${cursorUrl}') 16 19, pointer !important;
+      cursor: url('${relativeCursorUrl}') 16 16, pointer !important;
     }
     
     /* Maintain default text input cursor for usability */
