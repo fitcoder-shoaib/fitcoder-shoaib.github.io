@@ -247,11 +247,13 @@ section:last-of-type {
   box-shadow: var(--glow), 0 5px 20px var(--shadow);
   overflow: hidden;
   margin-bottom: 30px;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .terminal-window:hover {
-  box-shadow: var(--glow-strong), 0 8px 30px var(--shadow);
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.45), 0 8px 30px var(--shadow);
 }
 
 .terminal-header {
@@ -367,13 +369,34 @@ pre, code {
   border-radius: 4px;
   cursor: pointer;
   font-family: inherit;
-  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.btn-cyber::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 102, 0.15), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.btn-cyber:hover::before {
+  left: 100%;
 }
 
 .btn-cyber:hover {
   background-color: var(--btn-hover);
-  box-shadow: var(--glow);
-  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--glow-strong);
+  transform: translateY(-3px);
+  letter-spacing: 1px;
 }
 
 .btn-cyber.primary {
@@ -505,6 +528,13 @@ pre, code {
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4), 0 8px 30px var(--shadow);
 }
 
 .project-tags {
@@ -556,6 +586,13 @@ pre, code {
   align-items: flex-start;
   gap: 12px;
   background-color: rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.35);
 }
 
 .achievement-icon {
@@ -642,9 +679,8 @@ pre, code {
 
 /* Contact Section & Form Styling */
 .contact-wrapper {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 30px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .contact-meta-list {

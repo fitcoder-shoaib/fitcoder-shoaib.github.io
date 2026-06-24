@@ -417,12 +417,12 @@
     <!-- CONTACT SECTION -->
     <section id="contact" class="fade-in-section">
       <div class="section-header">
-        <h2 class="section-title glow-text">> ssh transmission@shoaib.io</h2>
-        <span class="section-subtitle">Secure Message Channel</span>
+        <h2 class="section-title glow-text">> contact --channels</h2>
+        <span class="section-subtitle">Secure Communication Routing</span>
       </div>
 
       <div class="contact-wrapper">
-        <div class="terminal-window">
+        <div class="terminal-window" style="margin-bottom: 0;">
           <div class="terminal-header">
             <div class="terminal-buttons">
               <span class="btn-dot close"></span>
@@ -447,38 +447,6 @@
                 <span class="contact-meta-value"><a href="hidden.html" target="_blank">/hidden.html</a></span>
               </li>
             </ul>
-          </div>
-        </div>
-
-        <div class="terminal-window">
-          <div class="terminal-header">
-            <div class="terminal-buttons">
-              <span class="btn-dot close"></span>
-              <span class="btn-dot minimize"></span>
-              <span class="btn-dot maximize"></span>
-            </div>
-            <div class="terminal-title">ssh_mailer.py</div>
-            <div class="terminal-meta">Send</div>
-          </div>
-          <div class="terminal-body">
-            <form id="contactForm" class="terminal-form" onsubmit="handleFormSubmit(event)">
-              <div class="form-group">
-                <label for="contactName">> sender_identity:</label>
-                <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. guest_user" required />
-              </div>
-              <div class="form-group">
-                <label for="contactEmail">> return_address:</label>
-                <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. mail@domain.com" required />
-              </div>
-              <div class="form-group">
-                <label for="contactMessage">> transmission_payload:</label>
-                <textarea id="contactMessage" name="message" class="form-input" placeholder="type your message here..." required></textarea>
-              </div>
-              <div class="form-btn-row">
-                <button type="submit" class="btn-cyber primary">> send_payload()</button>
-              </div>
-            </form>
-            <div id="formFeedback" class="terminal-output" style="display: none; margin-top: 15px;"></div>
           </div>
         </div>
       </div>
@@ -713,34 +681,6 @@ Access Granted: Refer to /hidden.html in the secrets section to unlock console p
       window.print();
     };
 
-    // --------------------------------------------------
-    // Contact Form Submission Handler
-    // --------------------------------------------------
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const form = document.getElementById('contactForm');
-      const feedback = document.getElementById('formFeedback');
-      
-      const name = document.getElementById('contactName').value;
-      const email = document.getElementById('contactEmail').value;
-      
-      // Simulate cryptographic sending
-      feedback.style.className = 'terminal-output accent';
-      feedback.style.display = 'block';
-      feedback.textContent = '> Initializing key exchange...';
-      
-      setTimeout(() => {
-        feedback.textContent = '> Encrypting packet payload (AES-256)...';
-        setTimeout(() => {
-          feedback.textContent = '> Broadcasting packet on port 443...';
-          setTimeout(() => {
-            feedback.style.color = 'var(--text)';
-            feedback.innerHTML = `<span style="color: var(--accent);">[SUCCESS]</span> Transmission acknowledged by shoaib.io.<br>Hash: sha256-${Math.random().toString(36).substring(2, 10)}${Math.random().toString(36).substring(2, 10)}`;
-            form.reset();
-          }, 800);
-        }, 800);
-      }, 800);
-    }
   </script>
 </body>
 </html>
