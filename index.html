@@ -3,158 +3,792 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>fitcoder-shoaib | Terminal Portfolio</title>
-  <style>
-    :root {
-      --bg: #0d0d0d;
-      --text: #00ff88;
-      --accent: #00ffaa;
-      --link: #00ffff;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Courier New', monospace;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 10px;
-    }
-
-    h1, h2 {
-      color: var(--accent);
-      border-left: 4px solid var(--accent);
-      padding-left: 10px;
-    }
-
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .terminal-box {
-      background: #111;
-      border: 1px solid var(--text);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px var(--text);
-      margin-bottom: 30px;
-    }
-
-    .cursor {
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .typing {
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid var(--text);
-      animation: typing 3s steps(30, end), blink 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    /* Dark mode toggle */
-    #toggleMode {
-      background: none;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 5px 10px;
-      cursor: pointer;
-      float: right;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      h1, h2 {
-        font-size: 20px;
-      }
-      .terminal-box {
-        padding: 15px;
-      }
-    }
-  </style>
+  <title>fitcoder-shoaib | Cyber Terminal Portfolio</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Cyber terminal style portfolio of fitcoder-shoaib - self-taught cyber explorer, Python developer, and Linux enthusiast." />
+  <meta name="keywords" content="fitcoder-shoaib, cyber explorer, hacker portfolio, python, linux, kali linux, security" />
+  <meta name="author" content="fitcoder-shoaib" />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <button id="toggleMode">🌙 Toggle Mode</button>
-
-    <h1 class="typing">> whoami <span class="cursor">█</span></h1>
-    <div class="terminal-box">
-      fitcoder-shoaib<br>
-      Self-taught cyber explorer | 12th Pass | Python + Linux<br>
-      Curious since 8th grade. Still hacking my way through.
+  <!-- Header / Navigation -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="#hero" class="logo">
+        <span class="logo-text">fitcoder@shoaib:~$</span>
+        <span class="logo-cursor"></span>
+      </a>
+      <nav id="nav">
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item"><a href="#about" class="nav-link">> about</a></li>
+          <li class="nav-item"><a href="#experience" class="nav-link">> experience</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">> projects</a></li>
+          <li class="nav-item"><a href="#achievements" class="nav-link">> achievements</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">> skills</a></li>
+          <li class="nav-item"><a href="#resume" class="nav-link">> resume</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">> contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-controls">
+        <button id="toggleMode" aria-label="Toggle Theme">
+          <span id="themeBtnIcon">🌙</span> <span id="themeBtnText">Toggle Theme</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+          ☰
+        </button>
+      </div>
     </div>
+  </header>
 
-    <h2>> origin_story</h2>
-    <div class="terminal-box">
-      covid-19 lockdown. notepad. vbs scripts. then cmd. failure. <br>
-      💡 Found Kali Linux on YouTube + Discord.<br>
-      Explored tools like Metasploit, Hydra, user mgmt.<br>
-      Python basics. Still hungry to go deeper.
+  <!-- Main Container -->
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero">
+      <div class="hero-wrapper">
+        <div class="hero-info fade-in-section">
+          <div class="hero-tag">[SYSTEM INITIALIZED]</div>
+          <h1 class="hero-heading glow-text">
+            Hello, I'm <span class="accent-text" style="color: var(--accent);">Shoaib</span>
+          </h1>
+          <p class="hero-text">
+            Self-taught cyber explorer, Linux enthusiast, and Python script developer. Passionate about exploring system security, scripting, and web technologies.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn-cyber primary">
+              <span>View Projects.sh</span>
+            </a>
+            <a href="#contact" class="btn-cyber">
+              <span>Connect.exe</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="terminal-window fade-in-section">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot maximize"></span>
+            </div>
+            <div class="terminal-title">interactive_console.sh</div>
+            <div class="terminal-meta">guest@shoaib</div>
+          </div>
+          <div class="terminal-body terminal-interactive">
+            <div class="terminal-history" id="terminalHistory">
+              <div class="terminal-output accent">Welcome to fitcoder-shoaib console v2.0.</div>
+              <div class="terminal-output">Type 'help' to see list of available commands.</div>
+            </div>
+            <div class="terminal-prompt-line">
+              <span class="terminal-prompt-sym">guest@shoaib:~$</span>
+              <input type="text" class="terminal-input" id="terminalInput" placeholder="type a command..." autocomplete="off" autofocus />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="fade-in-section">
+      <div class="section-header">
+        <h2 class="section-title glow-text">> whoami</h2>
+        <span class="section-subtitle">Bio & Origin Story</span>
+      </div>
+
+      <div class="about-grid">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot maximize"></span>
+            </div>
+            <div class="terminal-title">profile.md</div>
+            <div class="terminal-meta">Markdown</div>
+          </div>
+          <div class="terminal-body">
+            <p style="margin-bottom: 15px; color: var(--accent);"># fitcoder-shoaib</p>
+            <p style="margin-bottom: 12px;"><strong>Status:</strong> Cyber Explorer & Programmer</p>
+            <p style="margin-bottom: 12px;"><strong>Education:</strong> 12th Pass Graduate</p>
+            <p style="margin-bottom: 12px;"><strong>Focus Areas:</strong> Python Automation, System Auditing, Linux Environments</p>
+            <p>I started my journey out of deep curiosity back in the 8th grade. Since then, I've been fascinated by command lines, automation, and how networks communicate. Always tinkering, forever learning.</p>
+          </div>
+        </div>
+
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot maximize"></span>
+            </div>
+            <div class="terminal-title">origin_story.log</div>
+            <div class="terminal-meta">System Logs</div>
+          </div>
+          <div class="terminal-body">
+            <p style="color: var(--accent); margin-bottom: 10px;">[timestamp: lock-down-2020]</p>
+            <p style="margin-bottom: 10px;">• COVID-19 isolation initiated. Boredom levels critical.</p>
+            <p style="margin-bottom: 10px;">• Began editing `.vbs` files in Notepad. Basic command prompt discovery.</p>
+            <p style="margin-bottom: 10px;">• Failed multiple times. Discovered Kali Linux communities via Discord/YouTube.</p>
+            <p style="margin-bottom: 10px;">• Configured custom virtual machines. Explored auditing tools (Metasploit, Hydra).</p>
+            <p>• Started writing Python scripts to automate terminal functions. Still hungry to go deeper.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="fade-in-section">
+      <div class="section-header">
+        <h2 class="section-title glow-text">> journal --milestones</h2>
+        <span class="section-subtitle">My Learning Journey Timeline</span>
+      </div>
+
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="btn-dot close"></span>
+            <span class="btn-dot minimize"></span>
+            <span class="btn-dot maximize"></span>
+          </div>
+          <div class="terminal-title">journal_viewer.sh</div>
+          <div class="terminal-meta">Database</div>
+        </div>
+        <div class="terminal-body">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-time">2020 - 2021</div>
+              <h3 class="timeline-title">The Spark & Scripting Basics</h3>
+              <p class="timeline-desc">
+                Discovered computer logic during the lock-down. Experimented with Windows batch files and `.vbs` (Visual Basic Scripts) in Notepad. Learned the basics of the command-line interface.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-time">2021 - 2022</div>
+              <h3 class="timeline-title">Linux & Cyber Exploration</h3>
+              <p class="timeline-desc">
+                Began studying Linux OS structures. Configured virtual machine environments and deployed Kali Linux. Explored system tools like Nmap, Metasploit, and Hydra for testing security mechanics.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-time">2022 - 2023</div>
+              <h3 class="timeline-title">Python CLI Development</h3>
+              <p class="timeline-desc">
+                Learned Python fundamentals. Created basic terminal scripts, automations, and text-based calculators (including the Number Factorizer). Developed skills in user administration and permission controls.
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-time">2024 - Present</div>
+              <h3 class="timeline-title">System Auditing & Web Integration</h3>
+              <p class="timeline-desc">
+                Integrating command-line tools into responsive web interfaces. Expanding security fundamentals, exploring containerization, and looking for entry-level technician or dev opportunities. Completed the 12th standard education milestone.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="fade-in-section">
+      <div class="section-header">
+        <h2 class="section-title glow-text">> ls /bin/projects</h2>
+        <span class="section-subtitle">Code Repositories & Implementations</span>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="terminal-window project-card">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot maximize"></span>
+            </div>
+            <div class="terminal-title">factorizer.exe</div>
+          </div>
+          <div class="terminal-body" style="display:flex; flex-direction:column; height: 100%; flex-grow:1;">
+            <h3 style="color: var(--accent); margin-bottom: 8px;">🔢 Number Factorizer</h3>
+            <p style="font-size: 0.9rem; color: var(--text-dim);">
+              A tool that calculates the prime factorization and lists all positive divisors of any input number. Built with an interactive UI.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML5</span>
+              <span class="project-tag">CSS3</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Python Core</span>
+            </div>
+            <div class="project-links">
+              <a href="projects/factorizer.html" class="project-link" target="_blank">> Try Live 🌐</a>
+              <a href="projects/factorizer.py" class="project-link" target="_blank">> View Py Source 📄</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="terminal-window project-card">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot maximize"></span>
+            </div>
+            <div class="terminal-title">interactive_shell.js</div>
+          </div>
+          <div class="terminal-body" style="display:flex; flex-direction:column; height: 100%; flex-grow:1;">
+            <h3 style="color: var(--accent); margin-bottom: 8px;">💻 Shell Portfolio</h3>
+            <p style="font-size: 0.9rem; color: var(--text-dim);">
+              This website! A fully responsive cyber terminal simulation dashboard complete with theme switching, sticky scroll, and CLI command history.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML5</span>
+              <span class="project-tag">Vanilla CSS</span>
+              <span class="project-tag">DOM Scripting</span>
+            </div>
+            <div class="project-links">
+              <a href="#hero" class="project-link">> Source (Local) 📂</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="terminal-window project-card">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot maximize"></span>
+            </div>
+            <div class="terminal-title">secrets_portal.bin</div>
+          </div>
+          <div class="terminal-body" style="display:flex; flex-direction:column; height: 100%; flex-grow:1;">
+            <h3 style="color: var(--accent); margin-bottom: 8px;">🕵️‍♂️ Secrets Portal</h3>
+            <p style="font-size: 0.9rem; color: var(--text-dim);">
+              A hidden console interface styled as a secure developer workspace loaded with interactive logs and experimental decoders.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Secret Page</span>
+              <span class="project-tag">Retro UI</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div class="project-links">
+              <a href="hidden.html" class="project-link" target="_blank">> Access Portal 🛰️</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements" class="fade-in-section">
+      <div class="section-header">
+        <h2 class="section-title glow-text">> achievements --show</h2>
+        <span class="section-subtitle">Milestones & Completed Objectives</span>
+      </div>
+
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-icon">🎓</div>
+          <div class="achievement-details">
+            <h4>12th Grade Certificate</h4>
+            <p>Successfully completed secondary school education with science/math foundation.</p>
+          </div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-icon">🐧</div>
+          <div class="achievement-details">
+            <h4>Self-Taught Linux Competence</h4>
+            <p>200+ hours configure virtual networks, user privileges, installation scripts & Kali framework.</p>
+          </div>
+        </div>
+        <div class="achievement-card">
+          <div class="achievement-icon">🐍</div>
+          <div class="achievement-details">
+            <h4>Python Automation Scripts</h4>
+            <p>Developed terminal automation tools, file handling scripts, and calculation algorithms.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="fade-in-section">
+      <div class="section-header">
+        <h2 class="section-title glow-text">> systeminfo | grep -E "skills"</h2>
+        <span class="section-subtitle">Core Technical Competence</span>
+      </div>
+
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="btn-dot close"></span>
+            <span class="btn-dot minimize"></span>
+            <span class="btn-dot maximize"></span>
+          </div>
+          <div class="terminal-title">skill_telemetry.exe</div>
+          <div class="terminal-meta">Process</div>
+        </div>
+        <div class="terminal-body">
+          <div class="skills-grid">
+            <!-- Col 1: Systems & Sec -->
+            <div class="skills-category">
+              <h3>[ Linux & Cybersecurity ]</h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span>Kali Linux & Debian OS</span>
+                    <span>85%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-level="85%"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span>Metasploit Auditing Framework</span>
+                    <span>60%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-level="60%"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span>Hydra & Password Auditing</span>
+                    <span>65%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-level="65%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Col 2: Development -->
+            <div class="skills-category">
+              <h3>[ Development & Systems ]</h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span>Python Programming (CLI)</span>
+                    <span>75%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-level="75%"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span>Linux System Administration</span>
+                    <span>80%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-level="80%"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span>HTML / CSS / JavaScript</span>
+                    <span>65%</span>
+                  </div>
+                  <div class="skill-progress">
+                    <div class="skill-bar" data-level="65%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME SECTION -->
+    <section id="resume" class="fade-in-section">
+      <div class="section-header">
+        <h2 class="section-title glow-text">> cat resume.json</h2>
+        <span class="section-subtitle">Structured Experience & Information</span>
+      </div>
+
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="btn-dot close"></span>
+            <span class="btn-dot minimize"></span>
+            <span class="btn-dot maximize"></span>
+          </div>
+          <div class="terminal-title">resume.json</div>
+          <div class="terminal-meta">JSON Document</div>
+        </div>
+        <div class="terminal-body resume-terminal">
+          <pre><code id="resumeCode">{
+  <span class="json-key">"identity"</span>: {
+    <span class="json-key">"name"</span>: <span class="json-string">"Shoaib"</span>,
+    <span class="json-key">"title"</span>: <span class="json-string">"Cyber Explorer & Script Developer"</span>,
+    <span class="json-key">"education"</span>: <span class="json-string">"12th Pass Science/Math"</span>
+  },
+  <span class="json-key">"skills_inventory"</span>: {
+    <span class="json-key">"operating_systems"</span>: [<span class="json-string">"Kali Linux"</span>, <span class="json-string">"Ubuntu"</span>, <span class="json-string">"WSL"</span>, <span class="json-string">"Windows"</span>],
+    <span class="json-key">"languages"</span>: [<span class="json-string">"Python"</span>, <span class="json-string">"Bash"</span>, <span class="json-string">"HTML5"</span>, <span class="json-string">"CSS3"</span>, <span class="json-string">"JavaScript"</span>],
+    <span class="json-key">"security_tools"</span>: [<span class="json-string">"Metasploit"</span>, <span class="json-string">"Hydra"</span>, <span class="json-string">"Nmap"</span>, <span class="json-string">"John the Ripper"</span>]
+  },
+  <span class="json-key">"experience_highlights"</span>: [
+    {
+      <span class="json-key">"period"</span>: <span class="json-string">"2020 - Present"</span>,
+      <span class="json-key">"focus"</span>: <span class="json-string">"Self-study & practical penetration labs"</span>,
+      <span class="json-key">"description"</span>: <span class="json-string">"Simulated security tests in virtual machine sandboxes."</span>
+    },
+    {
+      <span class="json-key">"period"</span>: <span class="json-string">"2022 - Present"</span>,
+      <span class="json-key">"focus"</span>: <span class="json-string">"Python CLI tools & automation"</span>,
+      <span class="json-key">"description"</span>: <span class="json-string">"Developed multiple automation scripts, mathematical tools, and helpers."</span>
+    }
+  ]
+}</code></pre>
+          <div class="resume-actions">
+            <button class="btn-cyber" id="downloadResumeBtn">> download_resume.json</button>
+            <button class="btn-cyber" id="printResumeBtn">> print_pdf.sh</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="fade-in-section">
+      <div class="section-header">
+        <h2 class="section-title glow-text">> ssh transmission@shoaib.io</h2>
+        <span class="section-subtitle">Transmit Encrypted Message</span>
+      </div>
+
+      <div class="contact-wrapper">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot maximize"></span>
+            </div>
+            <div class="terminal-title">channels.conf</div>
+            <div class="terminal-meta">Metadata</div>
+          </div>
+          <div class="terminal-body">
+            <ul class="contact-meta-list">
+              <li class="contact-meta-item">
+                <span class="contact-meta-label">// GITHUB PORT</span>
+                <span class="contact-meta-value"><a href="https://github.com/fitcoder-shoaib" target="_blank">@fitcoder-shoaib</a></span>
+              </li>
+              <li class="contact-meta-item">
+                <span class="contact-meta-label">// SMTP MAIL INBOX</span>
+                <span class="contact-meta-value"><a href="mailto:github.molecule869@passinbox.com">github.molecule869@passinbox.com</a></span>
+              </li>
+              <li class="contact-meta-item">
+                <span class="contact-meta-label">// SECRET LOGS</span>
+                <span class="contact-meta-value"><a href="hidden.html" target="_blank">/hidden.html</a></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot maximize"></span>
+            </div>
+            <div class="terminal-title">ssh_mailer.py</div>
+            <div class="terminal-meta">Executable</div>
+          </div>
+          <div class="terminal-body">
+            <form id="contactForm" class="terminal-form" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="contactName">> sender_identity:</label>
+                <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. guest_user" required />
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">> return_address:</label>
+                <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. mail@domain.com" required />
+              </div>
+              <div class="form-group">
+                <label for="contactMessage">> transmission_payload:</label>
+                <textarea id="contactMessage" name="message" class="form-input" placeholder="type your message here..." required></textarea>
+              </div>
+              <div class="form-btn-row">
+                <button type="submit" class="btn-cyber primary">> send_payload()</button>
+              </div>
+            </form>
+            <div id="formFeedback" class="terminal-output" style="display: none; margin-top: 15px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>fitcoder-shoaib © 2026. All ports secured. Keep hacking.</p>
     </div>
+  </footer>
 
-    <h2>> skills --list</h2>
-    <div class="terminal-box">
-      ✔ Kali Linux<br>
-      ✔ Metasploit Framework<br>
-      ✔ Hydra<br>
-      ✔ Linux installation & user management<br>
-      ✔ Python (basic terminal programs)
-    </div>
-
-    <h2>> projects</h2>
-    <div class="terminal-box">
-      🔢 Number Factorizer<br>
-      <a href="projects/factorizer.html" target="_blank">🔍 Try It Live</a> |
-      <a href="projects/factorizer.py" target="_blank">📄 View Python Code</a>
-    </div>
-
-    <h2>> contact</h2>
-    <div class="terminal-box">
-      GitHub: <a href="https://github.com/fitcoder-shoaib" target="_blank">@fitcoder-shoaib</a><br>
-      Email: github.molecule869@passinbox.com
-    </div>
-
-    <h2>> secrets</h2>
-    <div class="terminal-box">
-      Access hidden file: <a href="hidden.html" target="_blank">/hidden.html</a> 🕵️‍♂️
-    </div>
-  </div>
-
+  <!-- Scripts -->
   <script>
-    const toggleBtn = document.getElementById('toggleMode');
-    toggleBtn.onclick = () => {
-      document.body.classList.toggle('light');
-      if (document.body.classList.contains('light')) {
-        document.body.style.backgroundColor = '#ffffff';
-        document.body.style.color = '#222';
-        toggleBtn.textContent = '🌑 Toggle Mode';
+    // --------------------------------------------------
+    // Responsive Navigation Bar
+    // --------------------------------------------------
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    menuToggle.onclick = () => {
+      const isOpen = navMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    };
+
+    // Close menu when a link is clicked (on mobile)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.onclick = () => {
+        navMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      };
+    });
+
+    // Header styling on scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
       } else {
-        document.body.style.backgroundColor = '#0d0d0d';
-        document.body.style.color = '#00ff88';
-        toggleBtn.textContent = '🌙 Toggle Mode';
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // --------------------------------------------------
+    // Dark / Light Theme Toggle
+    // --------------------------------------------------
+    const toggleBtn = document.getElementById('toggleMode');
+    const themeBtnIcon = document.getElementById('themeBtnIcon');
+    const themeBtnText = document.getElementById('themeBtnText');
+
+    // Check saved theme
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-theme');
+      themeBtnIcon.textContent = '🌑';
+      themeBtnText.textContent = 'Dark Terminal';
+    }
+
+    toggleBtn.onclick = () => {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      if (isLight) {
+        localStorage.setItem('theme', 'light');
+        themeBtnIcon.textContent = '🌑';
+        themeBtnText.textContent = 'Dark Terminal';
+      } else {
+        localStorage.setItem('theme', 'dark');
+        themeBtnIcon.textContent = '🌙';
+        themeBtnText.textContent = 'Toggle Theme';
       }
     };
+
+    // --------------------------------------------------
+    // Smooth Scroll & Active Menu Highlighting
+    // --------------------------------------------------
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= (sectionTop - 150)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // --------------------------------------------------
+    // Scroll Animation (Fade In)
+    // --------------------------------------------------
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const sectionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          
+          // Animate skill bars in this section if visible
+          if (entry.target.id === 'skills') {
+            document.querySelectorAll('.skill-bar').forEach(bar => {
+              bar.style.width = bar.getAttribute('data-level');
+            });
+          }
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-section').forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    // --------------------------------------------------
+    // Interactive Terminal Simulation
+    // --------------------------------------------------
+    const terminalHistory = document.getElementById('terminalHistory');
+    const terminalInput = document.getElementById('terminalInput');
+
+    const commands = {
+      help: () => `Available commands:
+• help           Show this message
+• clear          Clear terminal history
+• whoami         Display core developer identity
+• about          Display biography and background
+• skills         Show technical competence
+• projects       List current project links
+• resume         Dump resume JSON
+• contact        Display contact routes
+• secret         Reveal secret access coordinates`,
+      whoami: () => `fitcoder-shoaib
+-----------------------
+Role: Self-taught cyber explorer & developer
+Status: 12th Pass Graduate
+Curiosity Quotient: Extreme`,
+      about: () => `My coding journey started during the 2020 lockdowns out of sheer curiosity. 
+I began writing .vbs files in Notepad, made many mistakes, discovered Kali Linux, and gradually transition to Python scripts. 
+Currently developing script automation tools and interactive browser portals.`,
+      skills: () => `SKILLS TELEMETRY:
+- Kali Linux & System Deploys      [85%]
+- Python CLI Development           [75%]
+- Metasploit Framework             [60%]
+- Linux Administration             [80%]
+- Web Frontends (HTML/CSS/JS)      [65%]`,
+      projects: () => `PROJECT REGISTRY:
+1. Number Factorizer (HTML/JS + Python script)
+   -> Run: Click "Try Live" under Projects section or browse projects/factorizer.html
+2. Shell Portfolio (This page)
+3. Secrets Portal (/hidden.html)`,
+      resume: () => `DUMPING resume.json...
+{
+  "identity": {
+    "name": "Shoaib",
+    "title": "Cyber Explorer & Script Developer"
+  },
+  "skills": ["Python", "Linux Administration", "Metasploit", "Bash"],
+  "education": "12th Pass Graduate"
+}`,
+      contact: () => `CONTACT CHANNELS:
+- GitHub: https://github.com/fitcoder-shoaib
+- Email: github.molecule869@passinbox.com`,
+      secret: () => `Decrypting coordinate...
+Access Granted: Refer to /hidden.html in the secrets section to unlock console portals.`
+    };
+
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const inputVal = terminalInput.value.trim();
+        const cmd = inputVal.toLowerCase();
+        
+        if (!inputVal) return;
+
+        // Print input command
+        const promptLine = document.createElement('div');
+        promptLine.className = 'terminal-prompt-line';
+        promptLine.innerHTML = `<span class="terminal-prompt-sym">guest@shoaib:~$</span> <span class="terminal-output" style="margin:0;">${inputVal}</span>`;
+        terminalHistory.appendChild(promptLine);
+
+        // Process command
+        const outputLine = document.createElement('div');
+        outputLine.className = 'terminal-output';
+
+        if (cmd === 'clear') {
+          terminalHistory.innerHTML = '';
+        } else if (commands[cmd]) {
+          outputLine.textContent = commands[cmd]();
+          terminalHistory.appendChild(outputLine);
+        } else {
+          outputLine.className = 'terminal-output error';
+          outputLine.textContent = `Command not found: '${inputVal}'. Type 'help' to view available operations.`;
+          terminalHistory.appendChild(outputLine);
+        }
+
+        // Scroll to bottom
+        terminalInput.value = '';
+        terminalHistory.scrollTop = terminalHistory.scrollHeight;
+      }
+    });
+
+    // Focus terminal input when clicking the terminal body
+    document.querySelector('.terminal-interactive').addEventListener('click', () => {
+      terminalInput.focus();
+    });
+
+    // --------------------------------------------------
+    // Resume Download and Print Action Handler
+    // --------------------------------------------------
+    const downloadResumeBtn = document.getElementById('downloadResumeBtn');
+    const printResumeBtn = document.getElementById('printResumeBtn');
+    const resumeCode = document.getElementById('resumeCode');
+
+    downloadResumeBtn.onclick = () => {
+      const blob = new Blob([resumeCode.innerText], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'shoaib_resume.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    };
+
+    printResumeBtn.onclick = () => {
+      window.print();
+    };
+
+    // --------------------------------------------------
+    // Contact Form Submission Handler
+    // --------------------------------------------------
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const feedback = document.getElementById('formFeedback');
+      
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      
+      // Simulate cryptographic sending
+      feedback.style.className = 'terminal-output accent';
+      feedback.style.display = 'block';
+      feedback.textContent = '> Initializing key exchange...';
+      
+      setTimeout(() => {
+        feedback.textContent = '> Encrypting packet payload (AES-256)...';
+        setTimeout(() => {
+          feedback.textContent = '> Broadcasting packet on port 443...';
+          setTimeout(() => {
+            feedback.style.color = 'var(--text)';
+            feedback.innerHTML = `<span style="color: var(--accent);">[SUCCESS]</span> Transmission acknowledged by shoaib.io.<br>Hash: sha256-${Math.random().toString(36).substring(2, 10)}${Math.random().toString(36).substring(2, 10)}`;
+            form.reset();
+          }, 800);
+        }, 800);
+      }, 800);
+    }
   </script>
 </body>
 </html>
