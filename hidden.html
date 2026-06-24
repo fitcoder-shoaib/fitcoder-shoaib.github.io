@@ -131,12 +131,12 @@
         if (cmd === 'clear') {
           const lines = Array.from(terminal.querySelectorAll('.line'));
           lines.forEach(l => l.remove());
-        } else if (cmd === 'cmatrix') {
+        } else if (cmd === 'attack') {
           startCMatrix();
           return;
         } else if (cmd === 'help') {
           outputLine.innerHTML = `Available commands:<br>
-• cmatrix        - Run hacker-style falling matrix code rain<br>
+• attack         - Run hacker-style falling matrix code rain<br>
 • clear          - Clear terminal history<br>
 • exit / back    - Return to main portal<br>
 • secret         - Decrypt secret keys`;
@@ -179,10 +179,14 @@
 
       const canvas = document.createElement('canvas');
       canvas.id = 'cmatrixCanvas';
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
+      canvas.style.position = 'fixed';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100vw';
+      canvas.style.height = '100vh';
       canvas.style.display = 'block';
       canvas.style.background = 'black';
+      canvas.style.zIndex = '9999';
       document.body.appendChild(canvas);
 
       const ctx = canvas.getContext('2d');
